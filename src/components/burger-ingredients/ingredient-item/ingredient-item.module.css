@@ -1,0 +1,12 @@
+.item {
+  justify-content: center;
+}
+
+.itemName {
+  text-wrap: wrap;
+  text-align: center;
+}
+
+.counter {
+  position: relative;
+}
