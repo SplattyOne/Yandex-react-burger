@@ -3,6 +3,7 @@ import React from 'react';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import { MAIN_TYPE, SAUCE_TYPE, BUN_TYPE, MAIN_TYPE_NAME, SAUCE_TYPE_NAME, BUN_TYPE_NAME } from '../../utils/constants';
 import IngredientGroup from './ingredients-group/ingredients-group';
+import ingredientsStyles from './burger-ingredients.module.css';
 
 
 interface BurgerTabsProps {
@@ -30,25 +31,29 @@ interface BurgerIngredientsProps {
   ingredients: Array<any>
   pickedBun: any
   setPickedBun: any
-  pickedIngredients: any
+  pickedIngredients: Array<any>
   setPickedIngredients: any
 }
 
 function BurgerIngredients(props: BurgerIngredientsProps) {
   const [current, setCurrent] = React.useState(BUN_TYPE);
-  const categoryIngredients: Object = props.ingredients.reduce((acc, currentValue) => {
+  const allPickedIngredients = [...props.pickedIngredients, props.pickedBun];
+  const categorisedIngredients: Object = props.ingredients.reduce((acc, currentValue) => {
+    currentValue.count = allPickedIngredients.filter(x => x._id === currentValue._id).length;
     (acc[currentValue.type] = acc[currentValue.type] || []).push(currentValue);
     return acc;
-  }, {})
+  }, {});
 
   return (
-    <div>
+    <>
       <p className='text text_type_main-large mt-10'>Соберите бургер</p>
       <BurgerTabs current={current} setCurrent={setCurrent} />
-      {Object.entries(categoryIngredients).map(([categoryName, ingredients]) => (
-        <IngredientGroup categoryName={categoryName} ingredients={ingredients} />
-      ))}
-    </div>
+      <div className={`${ingredientsStyles.ingredientsScroll} custom-scroll mt-10`}>
+        {Object.entries(categorisedIngredients).map(([categoryName, categoryIngredients]) => (
+          <IngredientGroup key={categoryName} categoryName={categoryName} categoryIngredients={categoryIngredients} />
+        ))}
+      </div>
+    </>
   );
 }
 

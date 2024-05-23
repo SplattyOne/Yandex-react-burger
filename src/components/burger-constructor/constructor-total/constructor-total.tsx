@@ -10,10 +10,12 @@ interface ConstructorTotalProps {
 
 const ConstructorTotal = (props: ConstructorTotalProps) => {
   return (
-    <div className={`${contructorTotalStyles.container} flex`}>
-      <p className="text text_type_digits-medium mr-1">{props.amount}</p>
+    <div className={`${contructorTotalStyles.container} mt-10`}>
+      <p className="text text_type_digits-medium mr-2">{props.amount}</p>
       <CurrencyIcon type='primary' />
-      <Button htmlType="button" type="primary" size="medium">Оформить заказ</Button>
+      <span className="mr-4 ml-10">
+        <Button htmlType="button" type="primary" size="medium">Оформить заказ</Button>
+      </span>
     </div>
   )
 }

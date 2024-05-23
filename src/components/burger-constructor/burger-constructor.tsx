@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components'
+import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import ConstructorTotal from './constructor-total/constructor-total';
+import constructorStyles from './burger-constructor.module.css';
 
 
 
@@ -17,29 +18,37 @@ function BurgerConstructor(props: BurgerConstructorProps) {
 
   return (
     <>
-    <div className='mt-25' style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-      <ConstructorElement
-        type='top'
-        isLocked={true}
-        text={`${props.pickedBun.name} (верх)`}
-        price={props.pickedBun.price}
-        thumbnail={props.pickedBun.image}
-      />
-      {props.pickedIngredients.map((item) => {
-        return <ConstructorElement
-          isLocked={false}
-          text={item.name}
-          price={item.price}
-          thumbnail={item.image}
+    <div className={`${constructorStyles.scroll} ${constructorStyles.column} mt-25 custom-scroll`}>
+      <span className={`${constructorStyles.item} mr-4 ml-4 pl-8`}>
+        <ConstructorElement
+          type='top'
+          isLocked={true}
+          text={`${props.pickedBun.name} (верх)`}
+          price={props.pickedBun.price}
+          thumbnail={props.pickedBun.image}
         />
-      })}
-      <ConstructorElement
-        type='bottom'
-        isLocked={true}
-        text={`${props.pickedBun.name} (низ)`}
-        price={props.pickedBun.price}
-        thumbnail={props.pickedBun.image}
-      />
+      </span>
+      {props.pickedIngredients.map((item, index) =>
+        <span className={`${constructorStyles.item} mr-4 ml-4`}>
+          <DragIcon type="primary" />
+          <ConstructorElement
+            key={index}
+            isLocked={false}
+            text={item.name}
+            price={item.price}
+            thumbnail={item.image}
+          />
+        </span>
+      )}
+      <span className={`${constructorStyles.item} mr-4 ml-4 pl-8`}>
+        <ConstructorElement
+          type='bottom'
+          isLocked={true}
+          text={`${props.pickedBun.name} (низ)`}
+          price={props.pickedBun.price}
+          thumbnail={props.pickedBun.image}
+        />
+      </span>
     </div>
     <ConstructorTotal amount={amount}/>
     </>

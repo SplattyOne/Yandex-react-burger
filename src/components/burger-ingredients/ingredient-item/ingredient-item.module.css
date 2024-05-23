@@ -1,4 +1,9 @@
 .item {
+  flex: 0 0 47%
+}
+
+.itemContent {
+  display: flex;
   justify-content: center;
 }
 

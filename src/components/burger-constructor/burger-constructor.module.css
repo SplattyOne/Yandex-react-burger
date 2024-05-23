@@ -1,0 +1,16 @@
+.scroll {
+  max-height: calc(100vh - 310px);
+  overflow: scroll;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

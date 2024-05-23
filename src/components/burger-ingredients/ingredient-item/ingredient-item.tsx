@@ -5,24 +5,23 @@ import itemStyles from './ingredient-item.module.css';
 
 interface IngredientItemProps {
   ingredient: any
-  count: number
 }
 
 const IngredientItem = (props: IngredientItemProps) => {
   return (
-    <div key={props.ingredient._id} style={{flex: '0 0 47%'}}>
-      <span className={`${itemStyles.item} ${itemStyles.counter} flex pl-4 pr-4`}>
+    <span className={`${itemStyles.item}`}>
+      <span className={`${itemStyles.itemContent} ${itemStyles.counter} pl-4 pr-4`}>
         <img src={props.ingredient.image} alt={props.ingredient.name} />
-        {props.count > 0 && <Counter count={props.count} size="default" />}
+        {props.ingredient.count > 0 && <Counter count={props.ingredient.count} size="default" />}
       </span>
-      <span className={`${itemStyles.item} flex mt-1 mb-1`}>
+      <span className={`${itemStyles.itemContent} mt-1 mb-1`}>
         <p className='text text_type_digits-default mr-1'>{props.ingredient.price}</p>
         <CurrencyIcon type='primary' />
       </span>
-      <span className={`${itemStyles.item} flex`}>
+      <span className={`${itemStyles.itemContent}`}>
         <p className={`${itemStyles.itemName} text text_type_main-default`}>{props.ingredient.name}</p>
       </span>
-    </div>
+    </span>
   )
 }
 
