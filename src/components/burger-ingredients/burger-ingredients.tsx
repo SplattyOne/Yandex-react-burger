@@ -37,7 +37,7 @@ interface BurgerIngredientsProps {
 
 function BurgerIngredients(props: BurgerIngredientsProps) {
   const [current, setCurrent] = React.useState(BUN_TYPE);
-  const allPickedIngredients = [...props.pickedIngredients, props.pickedBun];
+  const allPickedIngredients = props.pickedBun ? [...props.pickedIngredients, props.pickedBun] : props.pickedIngredients;
   const categorisedIngredients: Object = props.ingredients.reduce((acc, currentValue) => {
     currentValue.count = allPickedIngredients.filter(x => x._id === currentValue._id).length;
     (acc[currentValue.type] = acc[currentValue.type] || []).push(currentValue);
