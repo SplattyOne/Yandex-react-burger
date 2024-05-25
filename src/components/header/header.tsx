@@ -6,8 +6,8 @@ import { Logo, BurgerIcon, MenuIcon, ProfileIcon } from '@ya.praktikum/react-dev
 function AppHeader() {
   return (
     <>
-      <nav className={`${headerStyles.nav} pt-4 pb-4`} style={{justifyContent: 'space-between'}}>
-        <span className='flex' style={{flex: '0 0 33%', justifyContent: 'flex-start'}}>
+      <nav className={`${headerStyles.nav} pt-4 pb-4`}>
+        <span className={headerStyles.headerLeft}>
           <span className='flex p-5'>
             <BurgerIcon type='primary' />
             <p className='text text_type_main-default ml-2'>Конструктор</p>
@@ -17,10 +17,10 @@ function AppHeader() {
             <p className='text text_type_main-default ml-2'>Лента заказов</p>
           </span>
         </span>
-        <span className='flex' style={{flex: '0 0 33%', justifyContent: 'center'}}>
+        <span className={headerStyles.headerCenter}>
           <Logo />
         </span>
-        <span className='flex' style={{flex: '0 0 33%', justifyContent: 'flex-end'}}>
+        <span className={headerStyles.headerRight}>
           <span className='flex p-5'>
             <ProfileIcon type='primary' />
             <p className='text text_type_main-default ml-2'>Личный кабинет</p>

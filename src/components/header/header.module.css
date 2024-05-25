@@ -4,3 +4,22 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.headerLeft {
+  display: flex;
+  flex: 0 0 33%;
+  justify-content: flex-start;
+}
+
+.headerCenter {
+  display: flex;
+  flex: 0 0 33%;
+  justify-content: center;
+}
+
+
+.headerRight {
+  display: flex;
+  flex: 0 0 33%;
+  justify-content: flex-end;
+}

@@ -1,22 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import appStyles from './app.module.css';
-// import ingredients from '../../utils/data';
+import { getRandomElements } from '../../utils/random';
 import ErrorBoundary from '../../utils/error-boundary';
+
 
 import AppHeader from '../header/header';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 
-const getRandomElement = (arr: Array<any>) => {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-
-const getRandomElements = (arr: Array<any>, count: number) => {
-  if (!arr || !arr.length)
-    return [];
-  return Array.apply(null, Array(count)).map(() => getRandomElement(arr));
-}
 
 interface IngredientsProps {
   isLoading: boolean,
@@ -25,13 +17,13 @@ interface IngredientsProps {
 }
 
 function App() {
-  const [ingredients, setIngredients] = React.useState<IngredientsProps>({
+  const [ingredients, setIngredients] = useState<IngredientsProps>({
     isLoading: false,
     hasError: false,
     data: []
   });
-  const [pickedBun, setPickedBun] = React.useState<any>(null);
-  const [pickedIngredients, setPickedIngredients] = React.useState<Array<any>>([]);
+  const [pickedBun, setPickedBun] = useState<any>(null);
+  const [pickedIngredients, setPickedIngredients] = useState<Array<any>>([]);
 
   React.useEffect(() => {
     const getIngredients = () => {
@@ -56,13 +48,13 @@ function App() {
       <div className={appStyles.appHeader}>
         <AppHeader />
       </div>
-      <div className={`${appStyles.appBody} flex`} style={{justifyContent: 'flex-between', gap: '40px'}}>
+      <div className={`${appStyles.appBody} flex`}>
         {ingredients.isLoading && "Загрузка..."}
         {ingredients.hasError && "Произошла ошибка: " + ingredients.hasError}
         {!ingredients.isLoading &&
         !ingredients.hasError &&
         <>
-          <span style={{flex: '0 0 50%'}}>
+          <span className={appStyles.column}>
             <BurgerIngredients
               ingredients={ingredients.data}
               pickedBun={pickedBun}
@@ -71,7 +63,7 @@ function App() {
               setPickedIngredients={setPickedIngredients}
             />
           </span>
-          <span style={{flex: '0 0 50%'}}>
+          <span className={appStyles.column}>
             <BurgerConstructor
               pickedBun={pickedBun}
               pickedIngredients={pickedIngredients}

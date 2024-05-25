@@ -11,27 +11,27 @@ interface BurgerConstructorProps {
   pickedIngredients: Array<any>
 }
 
-function BurgerConstructor(props: BurgerConstructorProps) {
-  const pickedBunPrice = props.pickedBun ? props.pickedBun.price : 0;
-  const amount: number = props.pickedIngredients.reduce((acc, currentValue) => {
+function BurgerConstructor({pickedBun, pickedIngredients}: BurgerConstructorProps) {
+  const pickedBunPrice = pickedBun ? pickedBun.price : 0;
+  const amount: number = pickedIngredients.reduce((acc, currentValue) => {
     return acc + currentValue.price;
   }, 0) + pickedBunPrice * 2;
 
   return (
     <>
     <div className={`${constructorStyles.scroll} ${constructorStyles.column} mt-25 custom-scroll`}>
-      {props.pickedBun &&
+      {pickedBun &&
       <span className={`${constructorStyles.item} mr-4 ml-4 pl-8`}>
         <ConstructorElement
           type='top'
           isLocked={true}
-          text={`${props.pickedBun.name} (верх)`}
-          price={props.pickedBun.price}
-          thumbnail={props.pickedBun.image}
+          text={`${pickedBun.name} (верх)`}
+          price={pickedBun.price}
+          thumbnail={pickedBun.image}
         />
       </span>
       }
-      {props.pickedIngredients.map((item, index) =>
+      {pickedIngredients.map((item, index) =>
         <span key={index} className={`${constructorStyles.item} mr-4 ml-4`}>
           <DragIcon type="primary" />
           <ConstructorElement
@@ -42,14 +42,14 @@ function BurgerConstructor(props: BurgerConstructorProps) {
           />
         </span>
       )}
-      {props.pickedBun &&
+      {pickedBun &&
       <span className={`${constructorStyles.item} mr-4 ml-4 pl-8`}>
         <ConstructorElement
           type='bottom'
           isLocked={true}
-          text={`${props.pickedBun.name} (низ)`}
-          price={props.pickedBun.price}
-          thumbnail={props.pickedBun.image}
+          text={`${pickedBun.name} (низ)`}
+          price={pickedBun.price}
+          thumbnail={pickedBun.image}
         />
       </span>
       }

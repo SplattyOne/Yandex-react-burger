@@ -9,7 +9,7 @@ interface IngredientItemProps {
 
 const IngredientItem = (props: IngredientItemProps) => {
   return (
-    <span className={`${itemStyles.item}`}>
+    <span>
       <span className={`${itemStyles.itemContent} ${itemStyles.counter} pl-4 pr-4`}>
         <img src={props.ingredient.image} alt={props.ingredient.name} />
         {props.ingredient.count > 0 && <Counter count={props.ingredient.count} size="default" />}
