@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 
 import { CurrencyIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import Modal from '../../hocs/modal/modal';
 import contructorTotalStyles from './constructor-total.module.css';
 import OrderDetails from '../order-details/order-details';
 
@@ -29,7 +30,11 @@ const ConstructorTotal = (props: ConstructorTotalProps) => {
         <Button htmlType="button" type="primary" size="medium" onClick={handleOpenModal}>Оформить заказ</Button>
       </span>
     </div>
-    <OrderDetails modalOpen={modalOpen} onClose={handleCloseModal} />
+    {modalOpen && (
+      <Modal title={null} onClose={handleCloseModal}>
+        <OrderDetails />
+      </Modal>
+    )}
     </>
   )
 }

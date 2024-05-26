@@ -3,12 +3,12 @@ import React from 'react';
 import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import ConstructorTotal from './constructor-total/constructor-total';
 import constructorStyles from './burger-constructor.module.css';
-import { IngridientProps } from '../../utils/interface';
+import { IngredientProps } from '../../utils/interface';
 
 
 interface BurgerConstructorProps {
-  pickedBun: IngridientProps
-  pickedIngredients: Array<IngridientProps>
+  pickedBun: IngredientProps
+  pickedIngredients: Array<IngredientProps>
 }
 
 const BurgerConstructor = ({pickedBun, pickedIngredients}: BurgerConstructorProps) => {
@@ -21,7 +21,7 @@ const BurgerConstructor = ({pickedBun, pickedIngredients}: BurgerConstructorProp
     <>
     <div className={`${constructorStyles.scroll} ${constructorStyles.column} mt-25 custom-scroll`}>
       {pickedBun &&
-      <span className={`${constructorStyles.item} mr-4 ml-4 pl-8`}>
+      <div className={`${constructorStyles.item} mr-4 ml-4 pl-8`}>
         <ConstructorElement
           type='top'
           isLocked={true}
@@ -29,10 +29,10 @@ const BurgerConstructor = ({pickedBun, pickedIngredients}: BurgerConstructorProp
           price={pickedBun.price}
           thumbnail={pickedBun.image}
         />
-      </span>
+      </div>
       }
       {pickedIngredients.map((item, index) =>
-        <span key={index} className={`${constructorStyles.item} mr-4 ml-4`}>
+        <div key={index} className={`${constructorStyles.item} mr-4 ml-4`}>
           <DragIcon type="primary" />
           <ConstructorElement
             isLocked={false}
@@ -40,10 +40,10 @@ const BurgerConstructor = ({pickedBun, pickedIngredients}: BurgerConstructorProp
             price={item.price}
             thumbnail={item.image}
           />
-        </span>
+        </div>
       )}
       {pickedBun &&
-      <span className={`${constructorStyles.item} mr-4 ml-4 pl-8`}>
+      <div className={`${constructorStyles.item} mr-4 ml-4 pl-8`}>
         <ConstructorElement
           type='bottom'
           isLocked={true}
@@ -51,7 +51,7 @@ const BurgerConstructor = ({pickedBun, pickedIngredients}: BurgerConstructorProp
           price={pickedBun.price}
           thumbnail={pickedBun.image}
         />
-      </span>
+      </div>
       }
     </div>
     <ConstructorTotal amount={amount}/>

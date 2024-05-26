@@ -1,18 +1,15 @@
 import React from "react";
 
-import { CheckMarkIcon } from '@ya.praktikum/react-developer-burger-ui-components'
-import Modal from '../../hocs/modal/modal';
+import { CheckMarkIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import orderStyles from './order-details.module.css';
 
 
 interface OrderDetailsProps {
-  modalOpen: boolean
-  onClose: Function
 }
 
-const OrderDetails = ({modalOpen, onClose}: OrderDetailsProps) => {
-  const modal = (
-    <Modal title={null} onClose={onClose}>
+const OrderDetails = (props: OrderDetailsProps) => {
+  return (
+    <div>
       <span className={`${orderStyles.content} mb-8 mt-5`}>
         <p className="text text_type_digits-large">034536</p>
       </span>
@@ -28,11 +25,7 @@ const OrderDetails = ({modalOpen, onClose}: OrderDetailsProps) => {
       <span className={`${orderStyles.content} mb-20`}>
         <p className="text text_type_main-default text_color_inactive">Дождитесь готовности на орбительной станции</p>
       </span>
-    </Modal>
-  );
-
-  return (
-    <>{modalOpen && modal}</>
+    </div>
   )
 }
 

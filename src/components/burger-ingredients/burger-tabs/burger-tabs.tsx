@@ -12,7 +12,7 @@ interface BurgerTabsProps {
 
 const BurgerTabs = (props: BurgerTabsProps) => {
   return (
-    <span className={tabStyles.tabs}>
+    <div className={tabStyles.tabs}>
       <Tab value={BUN_TYPE} active={props.current === BUN_TYPE} onClick={props.setCurrent}>
         {BUN_TYPE_NAME}
       </Tab>
@@ -22,7 +22,7 @@ const BurgerTabs = (props: BurgerTabsProps) => {
       <Tab value={MAIN_TYPE} active={props.current === MAIN_TYPE} onClick={props.setCurrent}>
         {MAIN_TYPE_NAME}
       </Tab>
-    </span>
+    </div>
   )
 }
 

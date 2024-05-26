@@ -1,4 +1,4 @@
-export interface IngridientProps {
+export interface IngredientProps {
   _id: string
   type: string
   image: string
@@ -13,6 +13,6 @@ export interface IngridientProps {
   _v: number
 }
 
-export interface IngredientCountedProps extends IngridientProps {
+export interface IngredientCountedProps extends IngredientProps {
   count: number
 }

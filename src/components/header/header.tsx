@@ -10,11 +10,11 @@ function AppHeader() {
         <span className={headerStyles.headerLeft}>
           <span className='flex p-5'>
             <BurgerIcon type='primary' />
-            <p className='text text_type_main-default ml-2'>Конструктор</p>
+            <span className='text text_type_main-default ml-2'>Конструктор</span>
           </span>
           <span className='flex p-5 ml-2'>
             <MenuIcon type='primary' />
-            <p className='text text_type_main-default ml-2'>Лента заказов</p>
+            <span className='text text_type_main-default ml-2'>Лента заказов</span>
           </span>
         </span>
         <span className={headerStyles.headerCenter}>
@@ -23,7 +23,7 @@ function AppHeader() {
         <span className={headerStyles.headerRight}>
           <span className='flex p-5'>
             <ProfileIcon type='primary' />
-            <p className='text text_type_main-default ml-2'>Личный кабинет</p>
+            <span className='text text_type_main-default ml-2'>Личный кабинет</span>
           </span>
         </span>
       </nav>

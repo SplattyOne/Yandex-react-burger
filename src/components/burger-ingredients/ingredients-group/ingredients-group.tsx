@@ -29,11 +29,11 @@ const IngredientGroup = (props: IngredientGroupProps) => {
   return (
     <>
       <IngredientGroupHeader categoryName={props.categoryName} />
-      <span className={`${groupStyles.group} mt-6 mb-10 ml-4 mr-4`}>
+      <div className={`${groupStyles.group} mt-6 mb-10 ml-4 mr-4`}>
         {props.categoryIngredients.map((ingredient: IngredientCountedProps, index: number) => (
           <IngredientItem key={index} ingredient={ingredient} />
         ))}
-      </span>
+      </div>
     </>
   )
 }

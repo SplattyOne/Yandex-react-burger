@@ -1,18 +1,15 @@
 import React from "react";
 
-import Modal from '../../hocs/modal/modal';
 import detailsStyles from './ingredient-details.module.css';
 
 
-interface IngridientDetailsProps {
-  ingredient: any,
-  modalOpen: boolean
-  onClose: any
+interface IngredientDetailsProps {
+  ingredient: any
 }
 
-const IngridientDetails = ({ingredient, modalOpen, onClose}: IngridientDetailsProps) => {
-  const modal = (
-    <Modal title="Детали ингридиента" onClose={onClose}>
+const IngredientDetails = ({ingredient}: IngredientDetailsProps) => {
+  return (
+    <div>
       <span className={`${detailsStyles.content} pl-4 pr-4`}>
         <img src={ingredient.image_large} alt={ingredient.name} />
       </span>
@@ -37,12 +34,8 @@ const IngridientDetails = ({ingredient, modalOpen, onClose}: IngridientDetailsPr
           <p className="text text_type_digits-default text_color_inactive">{ingredient.carbohydrates}</p>
         </span>
       </span>
-    </Modal>
-  );
-
-  return (
-    <>{modalOpen && modal}</>
+    </div>
   )
 }
 
-export default IngridientDetails;
+export default IngredientDetails;

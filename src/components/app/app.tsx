@@ -4,7 +4,7 @@ import appStyles from './app.module.css';
 import { getRandomElements } from '../../utils/random';
 import { REACT_MODALS_ID } from '../../utils/constants';
 import ErrorBoundary from '../../utils/error-boundary';
-import { IngridientProps } from '../../utils/interface';
+import { IngredientProps } from '../../utils/interface';
 
 
 import AppHeader from '../header/header';
@@ -15,7 +15,7 @@ import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 interface IngredientsProps {
   isLoading: boolean,
   error: string | null,
-  data: Array<IngridientProps>
+  data: Array<IngredientProps>
 }
 
 function App() {
@@ -58,7 +58,7 @@ function App() {
           <p>"Загрузка..."</p>
         ) : ingredients.data && ingredients.data.length ? (
         <>
-          <span className={appStyles.column}>
+          <div className={appStyles.column}>
             <BurgerIngredients
               ingredients={ingredients.data}
               pickedBun={pickedBun}
@@ -66,13 +66,13 @@ function App() {
               pickedIngredients={pickedIngredients}
               setPickedIngredients={setPickedIngredients}
             />
-          </span>
-          <span className={appStyles.column}>
+          </div>
+          <div className={appStyles.column}>
             <BurgerConstructor
               pickedBun={pickedBun}
               pickedIngredients={pickedIngredients}
             />
-          </span>
+          </div>
         </>
         ) : (
           <p>Нет данных об ингридиентах</p>
