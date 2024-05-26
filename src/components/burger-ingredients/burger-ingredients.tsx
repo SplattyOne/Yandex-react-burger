@@ -4,22 +4,23 @@ import { BUN_TYPE } from '../../utils/constants';
 import IngredientGroup from './ingredients-group/ingredients-group';
 import ingredientsStyles from './burger-ingredients.module.css';
 import BurgerTabs from './burger-tabs/burger-tabs';
+import { IngridientProps, IngredientCountedProps } from '../../utils/interface';
 
 
 interface BurgerIngredientsProps {
-  ingredients: Array<any>
-  pickedBun: any
-  setPickedBun: any
-  pickedIngredients: Array<any>
-  setPickedIngredients: any
+  ingredients: Array<IngridientProps>
+  pickedBun: IngridientProps
+  setPickedBun: Function
+  pickedIngredients: Array<IngridientProps>
+  setPickedIngredients: Function
 }
 
-function BurgerIngredients(props: BurgerIngredientsProps) {
+const BurgerIngredients = (props: BurgerIngredientsProps) => {
   const [current, setCurrent] = useState(BUN_TYPE);
   const allPickedIngredients = props.pickedBun ? [...props.pickedIngredients, props.pickedBun] : props.pickedIngredients;
-  const categorisedIngredients: Object = props.ingredients.reduce((acc, currentValue) => {
-    currentValue.count = allPickedIngredients.filter(x => x._id === currentValue._id).length;
-    (acc[currentValue.type] = acc[currentValue.type] || []).push(currentValue);
+  const categorisedIngredients: {[key: string]: Array<IngredientCountedProps>} = props.ingredients.reduce((acc, currentValue) => {
+    const count = allPickedIngredients.filter(x => x._id === currentValue._id).length;
+    (acc[currentValue.type] = acc[currentValue.type] || []).push({...currentValue, count: count});
     return acc;
   }, {});
 

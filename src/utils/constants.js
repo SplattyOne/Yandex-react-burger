@@ -1,3 +1,5 @@
+export const REACT_MODALS_ID = 'react_modals';
+
 export const MAIN_TYPE = 'main';
 export const SAUCE_TYPE = 'sauce';
 export const BUN_TYPE = 'bun';

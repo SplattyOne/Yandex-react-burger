@@ -3,15 +3,15 @@ import React from 'react';
 import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import ConstructorTotal from './constructor-total/constructor-total';
 import constructorStyles from './burger-constructor.module.css';
-
+import { IngridientProps } from '../../utils/interface';
 
 
 interface BurgerConstructorProps {
-  pickedBun: any
-  pickedIngredients: Array<any>
+  pickedBun: IngridientProps
+  pickedIngredients: Array<IngridientProps>
 }
 
-function BurgerConstructor({pickedBun, pickedIngredients}: BurgerConstructorProps) {
+const BurgerConstructor = ({pickedBun, pickedIngredients}: BurgerConstructorProps) => {
   const pickedBunPrice = pickedBun ? pickedBun.price : 0;
   const amount: number = pickedIngredients.reduce((acc, currentValue) => {
     return acc + currentValue.price;

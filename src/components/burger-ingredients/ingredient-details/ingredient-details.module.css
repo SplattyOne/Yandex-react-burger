@@ -1,0 +1,18 @@
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.multicontent {
+  composes: content;
+  gap: 20px;
+}
+
+.name {
+  text-wrap: wrap;
+  text-align: center;
+}
+
+.text {
+  text-align: center;
+}

@@ -1,6 +1,6 @@
 .scroll {
   max-height: calc(100vh - 310px);
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .column {

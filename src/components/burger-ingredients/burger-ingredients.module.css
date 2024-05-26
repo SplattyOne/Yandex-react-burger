@@ -1,4 +1,4 @@
 .ingredientsScroll {
   max-height: calc(100vh - 300px);
-  overflow: scroll;
+  overflow-y: scroll;
 }

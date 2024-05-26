@@ -3,6 +3,7 @@ import React from 'react';
 import IngredientItem from '../ingredient-item/ingredient-item';
 import { MAIN_TYPE, SAUCE_TYPE, BUN_TYPE, MAIN_TYPE_NAME, SAUCE_TYPE_NAME, BUN_TYPE_NAME } from '../../../utils/constants';
 import groupStyles from './ingredients-group.module.css';
+import { IngredientCountedProps } from '../../../utils/interface';
 
 
 interface IngredientGroupHeaderProps {
@@ -20,7 +21,7 @@ const IngredientGroupHeader = (props: IngredientGroupHeaderProps) => {
 }
 
 interface IngredientGroupProps {
-  categoryIngredients: Array<any>,
+  categoryIngredients: Array<IngredientCountedProps>,
   categoryName: string
 }
 
@@ -29,7 +30,7 @@ const IngredientGroup = (props: IngredientGroupProps) => {
     <>
       <IngredientGroupHeader categoryName={props.categoryName} />
       <span className={`${groupStyles.group} mt-6 mb-10 ml-4 mr-4`}>
-        {props.categoryIngredients.map((ingredient: any, index: number) => (
+        {props.categoryIngredients.map((ingredient: IngredientCountedProps, index: number) => (
           <IngredientItem key={index} ingredient={ingredient} />
         ))}
       </span>
