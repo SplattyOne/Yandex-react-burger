@@ -1,0 +1,17 @@
+.item {
+  cursor: pointer;
+}
+
+.itemContent {
+  display: flex;
+  justify-content: center;
+}
+
+.itemName {
+  text-wrap: wrap;
+  text-align: center;
+}
+
+.counter {
+  position: relative;
+}
