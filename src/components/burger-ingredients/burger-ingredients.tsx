@@ -1,9 +1,11 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 
 import { BUN_TYPE } from '../../utils/constants';
 import IngredientGroup from './ingredients-group/ingredients-group';
 import ingredientsStyles from './burger-ingredients.module.css';
 import BurgerTabs from './burger-tabs/burger-tabs';
+import Modal from '../hocs/modal/modal';
+import IngredientDetails from './ingredient-details/ingredient-details';
 import { IngredientProps, IngredientCountedProps } from '../../utils/interface';
 
 
@@ -29,6 +31,15 @@ const BurgerIngredients = (props: BurgerIngredientsProps) => {
     }, {}),
     [props.ingredients, allPickedIngredients]
   );
+  const [modalIngredient, setModalIngredient] = useState(null);
+
+  const handleCloseModal = useCallback(() => {
+    setModalIngredient(null);
+  }, [setModalIngredient]);
+
+  const handleOpenModal = useCallback((ingredient) => {
+    setModalIngredient(ingredient);
+  }, [setModalIngredient]);
 
   return (
     <>
@@ -36,9 +47,19 @@ const BurgerIngredients = (props: BurgerIngredientsProps) => {
       <BurgerTabs current={current} setCurrent={setCurrent} />
       <div className={`${ingredientsStyles.ingredientsScroll} custom-scroll mt-10`}>
         {Object.entries(categorisedIngredients).map(([categoryName, categoryIngredients]) => (
-          <IngredientGroup key={categoryName} categoryName={categoryName} categoryIngredients={categoryIngredients} />
+          <IngredientGroup
+            key={categoryName}
+            categoryName={categoryName}
+            categoryIngredients={categoryIngredients}
+            handleOpenModal={handleOpenModal}
+          />
         ))}
       </div>
+      {modalIngredient && (
+        <Modal title="Детали ингридиента" onClose={handleCloseModal}>
+          <IngredientDetails ingredient={modalIngredient} />
+        </Modal>
+      )}
     </>
   );
 }

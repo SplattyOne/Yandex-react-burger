@@ -1,25 +1,18 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 
 import { CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-components';
-import Modal from '../../hocs/modal/modal';
 import itemStyles from './ingredient-item.module.css';
-import IngredientDetails from '../ingredient-details/ingredient-details';
 import { IngredientCountedProps } from '../../../utils/interface';
 
 interface IngredientItemProps {
-  ingredient: IngredientCountedProps
+  ingredient: IngredientCountedProps,
+  handleOpenModal: (ingredient: IngredientCountedProps) => void
 }
 
 const IngredientItem = (props: IngredientItemProps) => {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const handleCloseModal = useCallback(() => {
-    setModalOpen(false);
-  }, [setModalOpen]);
-
-  const handleOpenModal = useCallback(() => {
-    setModalOpen(true);
-  }, [setModalOpen]);
+  const handleOpenModal = () => {
+    props.handleOpenModal(props.ingredient);
+  }
 
   return (
     <>
@@ -36,11 +29,6 @@ const IngredientItem = (props: IngredientItemProps) => {
         <p className={`${itemStyles.itemName} text text_type_main-default`}>{props.ingredient.name}</p>
       </div>
     </div>
-    {modalOpen && (
-      <Modal title="Детали ингридиента" onClose={handleCloseModal}>
-        <IngredientDetails ingredient={props.ingredient} />
-      </Modal>
-    )}
     </>
   )
 }
